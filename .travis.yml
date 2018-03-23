@@ -1,4 +1,5 @@
 language: node_j
+
 install: true
 script: true
 after_success:
@@ -8,6 +9,7 @@ env:
     secure: ZAk+FmLK9SWApDwvEyVwv+n17Mv8e+Frv8fRGLAu/GL81oCi5GVSlco6vPiKbrf9OFtkTvFgTu0FwcaEHi8pJGK2NyzBE4TxHxzxE7qyHiAt0IuOuUMF9qK1wW2BmsNpVv2OBhZRclDqBrEmi6jnO4htfmtfsQiggnlvfLT5e6kr+ILWNQH+9eJNG+cXNgJTVRmYYoTO5Xizv5gC0Z6P0x6IdP/tEtR1cUv9PFz4FTRr8odnee5Ihu2+50jeD5ghV7/xI1C+DEwHRXPMVrSuCPb9l/iYik8kcRcCuy1JZyGJncQovSLLQ86aQk76mzokI7B+vwu4ud50XUMQp3I8T3cMbLKl1IsBlQ8IoUg5i0skWdN114vHm6hQmzZ2r6+IhB4GYvroyQKkFYPz9cDFGh9kJHFtvY7WGLWDgtW44sxgTiBTjzSDTq00y0uhiqazWqbJskvx9yC9c+oQ987jcN9R1sMuooxL1XCveXckcKcYG+85v47RijnZi6bJUwH+snQcctXDcs6BkEuywB2AC1TST4WiQPKgKdgD00WPidFKosxlGanGCnR8YS50+tFfeRmfuTb9qtTlfF0/3HDrV+Ej22cd3wT8ErIoQYhcU+/y24qworu7+/lJxQ0Xt21nPT/UNn5rbAsgzT7vfyqBQODpopIrQAFDJeCqXnQ/PtQ=
 before_install:
   - openssl aes-256-cbc -k "$super_secret_password" -in se234.pem.enc -out se234.pem -d
+  - sudo chmod 400 se234.pem
 after_success:
   - ls -l
   - scp -i "se234.pem" -r html/* ubuntu@ec2-54-187-61-112.us-west-2.compute.amazonaws.com: "/var/www/html/"
