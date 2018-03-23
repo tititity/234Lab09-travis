@@ -1,4 +1,4 @@
-language: node_js
+language: node_j
 install: true
 script: true
 after_success:
@@ -11,3 +11,6 @@ before_install:
 after_success:
   - ls -l
   - scp -i "se234.pem" -r html/* ubuntu@ec2-54-187-61-112.us-west-2.compute.amazonaws.com: "/var/www/html/"
+  addons:
+    ssh_known_hosts:
+      - ubuntu@ec2-54-187-61-112.us-west-2.compute.amazonaws.com
